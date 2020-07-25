@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            text-align: left;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            padding-left: 20px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+    </style>
+    <script src="jquery-3.4.0.js"></script>
+    <div class="wrap">
+    </div>
+    <script>
+        var news = [
+            '今天天气真好啊',
+            '明天更美好',
+            '是不是有进展了',
+            '看样子是没有',
+            '为什么没有呢',
+            '因为小安被拒绝了',
+        ];
+        news.forEach(function (item) {
+            //循环遍历news里面的内容
+            // 将他添加到wrap里面
+            $('.wrap').append(`<p>${item}</p>`)
+        })
+
+        setInterval(function () {
+            $('p:first').animate({   //:first 是指的是第一个元素
+                marginTop: '-50px'
+            }, 500, function () {   
+                //清空margin-top 
+                $('.wrap').append($('p:first'))
+                $('p').css({
+                    margin: 0
+                })
+            });
+            // bug1  闪现 因为 animate 是异步；所以 没有动画直接插入dom
+            // $(".wrap").append($("p:first"));
+
+
+        }, 1000)
+    </script>
+</body>
+
+</html>

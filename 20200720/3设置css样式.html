@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.4.0.js"></script>
+<body>
+    <div class="box"></div>
+
+    <script>
+
+        //css(option) 给元素设置样式
+        //参数：对象 key:value 的css样式属性 注意驼峰式写法：backgroundColor
+        // 可以继续调用jq下面的API
+    //    var res = $('.box').css({
+    //         width:'100px',
+    //         height:'100px',
+    //         background:'red'
+    //     }).hide()
+    //     console.log(res)
+
+
+    // addClass(str) 作用 给HTML 添加类名 并返回jQuery对象
+    // 参数：类名字符串
+
+    // $('div').addClass('active')
+
+        var res = $('.box').css({
+            width:'100px',
+            height:'100px',
+            background:'red'
+        }).addClass('active')
+
+        // 通过修改类名的方式
+    </script>
+</body>
+</html>

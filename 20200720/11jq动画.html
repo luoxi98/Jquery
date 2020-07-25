@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.4.0.js"></script>
+</head>
+
+<body>
+    <button>滑动动画</button>
+    <div class="box"></div>
+    <script>
+        $('.box').css({
+            width:'100px',
+            height:'100px',
+            background:'red',
+            // opacity:'0'
+        });
+        // $('button').on('click',function(){
+        //     $('.box').slideToggle()
+        // })
+
+
+
+        // $('button').on('click',function(){
+        //     $('.box').slideUp()
+        // })
+
+
+        // $('button').on('click',function(){
+        //     $('.box').fadeOut() //渐隐
+        // })
+        
+        // $('button').on('click',function(){
+        //     $('.box').fadeIn()  //渐显
+        // })
+
+
+        $('button').on('click',function(){
+            $('.box').fadeTo('slow','0.2',function(){
+                alert('fffffffff') 
+            })   // 参一 速度 参二：透明度  参三 执行完再执行function
+        })
+    </script>
+</body>
+</html>

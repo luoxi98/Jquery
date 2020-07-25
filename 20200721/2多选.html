@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="jquery-3.4.0.js"></script>
+
+    <input type="checkbox" value="1"> 温柔
+    <input type="checkbox" value="2">可爱
+    <input type="checkbox" value="3">大方
+    <input type="checkbox" value="4">淑女
+    <input type="checkbox" value="5">活泼
+
+    <button>就是我</button>
+
+    <script>
+        //如何获取 用户勾选的内容
+
+        $('button').on('click',function(){
+            var checkArr = [ ]
+            //获取被勾选的元素
+            $('input:checked').each(function(index,item){
+                console.log(item.value)
+                checkArr.push(item.value)
+            })
+            console.log($('input:checked'),checkArr)
+            // checked 表示Boolean
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box"></div>
+    </div>
+    <div id="box"></div>
+    
+
+    <script>
+        //注意：不是dom对象
+        // ---->不能直接使用dom对象的API  可以使用jquery下api
+
+        var wrap = $('.wrap')
+        var box = $('#box')
+
+
+        //jq变为 dom  加个下标
+        box = box[0]
+
+        //dom变为jq
+        var res = $(box); //jq对象
+
+        $('.wrap>.box').css({
+            width:'100px'
+        })
+
+        //$()作用：选中html元素返回jq对象 2：将dom对象 变为jq对象
+        // 参数：【css 选择器】或者dom对象
+
+    </script>
+    <script src="jquery-3.4.0.js"></script>
+</body>
+</html>

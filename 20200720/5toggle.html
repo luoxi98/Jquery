@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.4.0.js"></script>
+<body>
+    <style>
+
+    </style>
+    <button>显示</button>
+    <div class="box"></div>
+    <script>
+        $(window).on('load', function () {
+            // 1 初始化设置box样式
+            $('.box').css({
+                width: '100px',
+                height: '100px',
+                background: 'red',
+            })
+        })
+
+        // 给button绑定点击事件
+        $('button').on('click',function(){
+            // toggle()设置元素显示隐藏 取反 返回jq对象
+            $('.box').toggle()
+        })
+
+        //jq 方法封装完毕；直接需要知道怎么用 返回值是什么
+    </script>
+</body>
+
+</html>

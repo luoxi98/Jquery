@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div>哈哈哈</div>
+
+<body>
+    <script>
+        //链式调用 所有API返回的都是同一个对象
+        function $(str) {
+            return new jQuery(str) //返回一个jquery函数
+
+        }
+
+        function jQuery(el) {
+            //this指向的是jQuery  最终还是指向a
+            this.el = document.querySelector(el)
+            console.log(this)
+        }
+
+        // jQuery的原型对象下所有属性   jQuery构造函数所实例化的对象执行直接访问
+        jQuery.prototype = {
+            html: function (str) {
+                // 如何再方法中找到 jQuery 对象 ----->this
+                console.log(this.el);
+                // 如果通过this在 jQuery对象内部找到 html标签
+                this.el.innerHTML = str;
+                return this    //为了链式调用方法 返回 jQuery对象
+            }
+        }
+
+        var a = $('div') 
+       // var a = new jQuery('div');
+        
+        // a = {
+        //     el: <div></div>
+        // }
+            
+       jQuery.prototype.hide =  function (el){
+            var val = 1; 
+            //el 
+           this.el.style.opacity = val; //将透明度设为val
+            var timer = setInterval(() => {
+                val -= 0.1;  //每隔30ms - 0.1
+                if(val<=0){
+                    //this.el指向的b  el是'div'
+                    this.el.style.opacity = 0; //让它透明度变为0
+                    console.log(this)
+                   // el.style.dispaly = 'none'; 
+                    clearInterval(timer); //清除定时器
+                    return;
+                }
+                this.el.style.opacity = val; 
+            }, 30);
+            return this;
+        }
+        var b = $('div').hide()
+         
+
+        
+        
+
+
+
+
+
+
+        // jQuery.prototype.on = function (str, callback, async) {
+        //     // 如何给某一个元素绑定事件
+        //     // 1 通过wyq 对象获取元素
+        //     this.el.addEventListener(str, callback, async);
+        //     return this;
+        // };
+        // jQuery.prototype.show = function () {
+        //     this.el.style.display = "block";
+        //     var val = 0;
+        //     this.el.style.opacity = val;
+        //     var timer = setInterval(() => {
+        //         val += 0.1;
+        //         if (val >= 1) {
+        //             this.el.style.opacity = 1;
+        //             clearInterval(timer);
+        //             return;
+        //         }
+        //         this.el.style.opacity = val;
+        //     }, 30);
+        //     return this;
+        // };
+        // jQuery.prototype.getStyle = function (str) {
+        //     this.currentStyle = null;
+        //     if (el.currentStyle) {
+        //         this.currentStyle = this.el.currentStyle[str];
+        //     } else {
+        //         // 非IE
+        //         this.currentStyle = getComputedStyle(this.el, null)[str];
+        //     }
+
+        //     return this;
+        // };
+        // jQuery.prototype.animate = function (str, end, time, callback) {
+        //     var start = this.getStyle(el, str);
+        //     start = parseInt(start);
+        //     console.log(str, start);
+        //     var s = end - start; // 求过度值
+        //     time = time * 1000;
+        //     var timer = setInterval(() => {
+        //         start += s / (time / 16.7);
+        //         if (s > 0) {
+        //             if (start >= end) {
+        //                 str == "opacity" || str === "zIndex" ?
+        //                     (this.el.style[str] = end) :
+        //                     (this.el.style[str] = end + "px");
+        //                 clearInterval(timer);
+        //                 if (typeof callback === "function") {
+        //                     callback();
+        //                 }
+        //             }
+        //         } else {
+        //             if (start <= end) {
+        //                 str == "opacity" || str === "zIndex" ?
+        //                     (this.el.style[str] = end) :
+        //                     (this.el.style[str] = end + "px");
+        //                 clearInterval(timer);
+        //                 if (typeof callback === "function") {
+        //                     callback();
+        //                 }
+        //             }
+        //         }
+
+        //         // 普通的赋值 区分 哪些属性需要单位
+        //         // 处理【没有单位 css 属性】
+        //         if (str == "opacity" || str === "zIndex") {
+        //             this.el.style[str] = start;
+        //         } else {
+        //             this.el.style[str] = start + "px";
+        //         }
+        //     }, 16.7); // 浏览器刷新时间是16.7ms
+        // };
+
+        // console.log(a)
+    </script>
+</body>
+
+</html>
